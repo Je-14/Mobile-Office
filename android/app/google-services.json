@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "603080721962",
+    "project_id": "mobo-office",
+    "storage_bucket": "mobo-office.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:603080721962:android:a4d48912005df4c261e553",
+        "android_client_info": {
+          "package_name": "com.torach.mobile_office"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "603080721962-9dirtrifr63k9n0kng77pbippf3tvouj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjn0O2kl80ebV_SMulnslfj52wqwCheqY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "603080721962-9dirtrifr63k9n0kng77pbippf3tvouj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
