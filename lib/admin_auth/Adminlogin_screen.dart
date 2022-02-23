@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:mobile_office/admin_auth/Adminlogin_screen.dart';
-import 'package:mobile_office/screens/home.dart';
+import 'package:mobile_office/screens/adminHome.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class AdminLoginScreen extends StatefulWidget {
+  const AdminLoginScreen({Key? key}) : super(key: key);
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _AdminLoginScreenState createState() => _AdminLoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _AdminLoginScreenState extends State<AdminLoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
+  // bool loggedIn = false;
   User? user;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: user == null ? _buildLoginForm() : const HomePage(),
+        child: user == null ? _buildLoginForm() : const AdminHome(),
       ),
     );
   }
@@ -28,7 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _buildLoginForm() {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Employee Log In'),
+        title: const Text('Admin Log In'),
       ),
       body: Container(
         color: Colors.amber[300],
@@ -86,27 +86,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           });
                         },
                         child: const Text('continue'),
-                      ),
-                      const SizedBox(
-                        width: 15,
-                      ),
-                      // ElevatedButton(
-                      //   onPressed: () {},
-                      //   child: const Icon(Icons.email),
-                      // ),
-                      // const SizedBox(
-                      //   width: 15,
-                      // ),
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const AdminLoginScreen(),
-                            ),
-                          );
-                        },
-                        child: const Text('Admin'),
                       ),
                       const SizedBox(
                         width: 15,

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_office/adminScreens/transactions.dart';
 import 'package:mobile_office/screens/receipts.dart';
+import 'package:mobile_office/screens/view_collections.dart';
+import 'package:mobile_office/screens/view_transactions.dart';
+import 'view_collections.dart';
 
 class AdminHome extends StatelessWidget {
   const AdminHome({Key? key}) : super(key: key);
@@ -13,8 +16,9 @@ class AdminHome extends StatelessWidget {
         actions: <Widget>[
           GestureDetector(
             onTap: () {},
-            child: CircleAvatar(
-              child: Image.asset('../assets/images/Profile.jpg'),
+            child: const CircleAvatar(
+              backgroundImage: AssetImage('../assets/images/Profile.jpg'),
+              backgroundColor: Color.fromARGB(255, 132, 221, 135),
             ),
           ),
           const SizedBox(
@@ -61,6 +65,48 @@ class AdminHome extends StatelessWidget {
                       ),
                       Text(
                         'Statistics',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.normal,
+                          decoration: TextDecoration.none,
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const CashTransactions(),
+                    ),
+                  );
+                },
+                child: Container(
+                  height: 300,
+                  padding: const EdgeInsets.all(15),
+                  decoration: const BoxDecoration(
+                    color: Colors.pink,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(20),
+                    ),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Icon(
+                        Icons.book,
+                        color: Colors.white,
+                        size: 70,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        'Sales',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.normal,
@@ -133,85 +179,6 @@ class AdminHome extends StatelessWidget {
                       ),
                       Text(
                         'Bank',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          decoration: TextDecoration.none,
-                          color: Colors.white,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          const GetTransaction('w1Alhg11TAGtDAp1Nd8c'),
-                    ),
-                  );
-                },
-                child: Container(
-                  height: 300,
-                  padding: const EdgeInsets.all(15),
-                  decoration: const BoxDecoration(
-                    color: Colors.pink,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(20),
-                    ),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Icon(
-                        Icons.sell,
-                        color: Colors.white,
-                        size: 70,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        'Transactions',
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          decoration: TextDecoration.none,
-                          color: Colors.white,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {},
-                child: Container(
-                  height: 300,
-                  padding: const EdgeInsets.all(15),
-                  decoration: const BoxDecoration(
-                    color: Colors.lightBlue,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(20),
-                    ),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Icon(
-                        Icons.location_city,
-                        color: Colors.white,
-                        size: 70,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        'Locations',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,

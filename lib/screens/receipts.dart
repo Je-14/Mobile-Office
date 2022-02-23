@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_office/screens/file_pick.dart';
 
 class Receipts extends StatelessWidget {
   const Receipts({Key? key}) : super(key: key);
@@ -30,7 +31,7 @@ class Receipts extends StatelessWidget {
         ),
         body: const TabBarView(
           children: <Widget>[
-            Cash(),
+            GetFiles(),
             Invoice(),
             Proforma(),
             GeneralReceipt(),

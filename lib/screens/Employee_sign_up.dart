@@ -1,51 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile_office/screens/adminHome.dart';
-import 'package:mobile_office/screens/first_screen.dart';
+import 'package:mobile_office/admin_auth/sign_up.dart';
 
-import 'admin_auth/Adminlogin_screen.dart';
+import '../screens/home.dart';
 
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: const FirebaseOptions(
-      apiKey: 'AIzaSyAjn0O2kl80ebV_SMulnslfj52wqwCheqY',
-      appId: '1:603080721962:android:a4d48912005df4c261e553',
-      messagingSenderId: '603080721962',
-      projectId: 'mobo-office',
-      storageBucket: 'mobo-office.appspot.com',
-    ),
-  );
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class EmployeeSignupScreen extends StatefulWidget {
+  const EmployeeSignupScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Mobile Office',
-      theme: ThemeData(
-        primaryColor: Colors.white,
-        brightness: Brightness.light,
-        primarySwatch: Colors.red,
-      ),
-      home: const Home(),
-    );
-  }
+  _EmployeeSignupScreenState createState() => _EmployeeSignupScreenState();
 }
 
-class SignupScreen extends StatefulWidget {
-  const SignupScreen({Key? key}) : super(key: key);
-
-  @override
-  _SignupScreenState createState() => _SignupScreenState();
-}
-
-class _SignupScreenState extends State<SignupScreen> {
+class _EmployeeSignupScreenState extends State<EmployeeSignupScreen> {
   final _passwordController = TextEditingController();
   final _emailController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -60,7 +26,7 @@ class _SignupScreenState extends State<SignupScreen> {
       body: Container(
         color: Colors.amber[300],
         child: Center(
-          child: user == null ? _buildSignupForm() : const AdminHome(),
+          child: user == null ? _buildSignupForm() : const HomePage(),
         ),
       ),
     );
@@ -134,11 +100,11 @@ class _SignupScreenState extends State<SignupScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const AdminLoginScreen(),
+                        builder: (context) => const AdminSignupScreen(),
                       ),
                     );
                   },
-                  child: const Text('Admin'),
+                  child: const Text('Admin Signup'),
                 ),
                 const SizedBox(
                   width: 15,

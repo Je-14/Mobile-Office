@@ -112,6 +112,12 @@ class _CashState extends State<Cash> {
                               await cash.add(
                                 {'qty': qty, 'item': item, 'price': price},
                               );
+                              setState(() {});
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text("Data Saved"),
+                                ),
+                              );
                             },
                             icon: const Icon(Icons.arrow_forward),
                           ),
@@ -147,6 +153,7 @@ class _CreditState extends State<Credit> {
   late String qty;
   late String item;
   late String price;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -205,6 +212,12 @@ class _CreditState extends State<Credit> {
                             onPressed: () async {
                               await credit.add(
                                 {'qty': qty, 'item': item, 'price': price},
+                              );
+                              setState(() {});
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text("Data Saved"),
+                                ),
                               );
                             },
                             icon: const Icon(Icons.arrow_forward),

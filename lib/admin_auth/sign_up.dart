@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mobile_office/screens/adminHome.dart';
+
+import '../screens/adminHome.dart';
 
 class AdminSignupScreen extends StatefulWidget {
   const AdminSignupScreen({Key? key}) : super(key: key);
@@ -9,22 +11,21 @@ class AdminSignupScreen extends StatefulWidget {
 }
 
 class _AdminSignupScreenState extends State<AdminSignupScreen> {
-  final _nameController = TextEditingController();
+  final _passwordController = TextEditingController();
   final _emailController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
-  bool loggedIn = false;
+  User? user;
   String name = "";
+  late String email;
+  late String password;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Signup Screen'),
-      ),
       body: Container(
         color: Colors.amber[300],
         child: Center(
-          child: loggedIn ? const AdminHome() : _buildSignupForm(),
+          child: user == null ? _buildSignupForm() : const AdminHome(),
         ),
       ),
     );
@@ -38,24 +39,13 @@ class _AdminSignupScreenState extends State<AdminSignupScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextFormField(
-              controller: _nameController,
-              decoration: const InputDecoration(labelText: 'username'),
-              validator: (text) =>
-                  text!.isEmpty || !RegExp(r'^[a-z A-Z 0-9]+$').hasMatch(text)
-                      ? 'Enter valid username. '
-                      : null,
-            ),
             const SizedBox(
               height: 10,
             ),
             TextFormField(
               controller: _emailController,
-              keyboardType: TextInputType.emailAddress,
-              decoration: const InputDecoration(
-                labelText: 'email',
-                fillColor: Colors.white,
-              ),
+              keyboardType: TextInputType.visiblePassword,
+              decoration: const InputDecoration(labelText: 'Email'),
               validator: (text) {
                 if (text!.isEmpty ||
                     !RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}')
@@ -65,15 +55,15 @@ class _AdminSignupScreenState extends State<AdminSignupScreen> {
                 return null;
               },
             ),
-            const SizedBox(
-              height: 20,
-            ),
+            const SizedBox(height: 10),
             TextFormField(
+              controller: _passwordController,
               keyboardType: TextInputType.visiblePassword,
+              obscureText: true,
               decoration: const InputDecoration(labelText: 'password'),
               validator: (text) {
                 if (text!.isEmpty) {
-                  return 'Please enter Password';
+                  return 'Enter correct Password';
                 }
                 return null;
               },
@@ -81,50 +71,34 @@ class _AdminSignupScreenState extends State<AdminSignupScreen> {
             const SizedBox(
               height: 20,
             ),
-            TextFormField(
-              keyboardType: TextInputType.visiblePassword,
-              decoration: const InputDecoration(labelText: 'Confirm password'),
-              validator: (text) {
-                if (text!.isEmpty) {
-                  return 'Password does not match';
-                }
-                return null;
-              },
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            ElevatedButton(
-              onPressed: _validate,
-              child: const Text('continue'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                ElevatedButton(
+                  onPressed: () async {
+                    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                      email: _emailController.text,
+                      password: _passwordController.text,
+                    );
+                    setState(() {
+                      user = FirebaseAuth.instance.currentUser;
+                    });
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text("Account created"),
+                      ),
+                    );
+                  },
+                  child: const Text('continue'),
+                ),
+                const SizedBox(
+                  width: 15,
+                ),
+              ],
             ),
           ],
         ),
       ),
-    );
-  }
-
-  void _validate() {
-    final form = _formKey.currentState;
-    if (!form!.validate()) {
-      return;
-    }
-    setState(() {
-      loggedIn = true;
-      name = _nameController.text;
-    });
-  }
-
-  Widget _buildSuccess() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        const Icon(
-          Icons.check,
-          color: Colors.orangeAccent,
-        ),
-        Text('Hi, $name')
-      ],
     );
   }
 }

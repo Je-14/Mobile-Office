@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:mobile_office/screens/profile_drop.dart';
 import 'package:mobile_office/screens/receipts.dart';
 import 'package:mobile_office/screens/statistics.dart';
 import 'package:mobile_office/screens/transactions.dart';
@@ -15,9 +16,14 @@ class HomePage extends StatelessWidget {
         title: const Text('Home'),
         actions: <Widget>[
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              DropList();
+            },
             child: CircleAvatar(
-              child: Image.asset('../assets/images/Profile.jpg'),
+              radius: 25,
+              backgroundImage: AssetImage(
+                '../assets/images/Profile.jpg',
+              ),
             ),
           ),
           const SizedBox(
