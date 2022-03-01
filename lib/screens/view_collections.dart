@@ -183,7 +183,7 @@ class SearchCredit extends SearchDelegate {
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (!snapshot.hasData) {
           return const Center(
-            child: LinearProgressIndicator(),
+            child: CircularProgressIndicator(),
           );
         } else {
           if (snapshot.data!.docs.isEmpty) {

@@ -10,11 +10,11 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: const FirebaseOptions(
-      apiKey: 'AIzaSyAjn0O2kl80ebV_SMulnslfj52wqwCheqY',
-      appId: '1:603080721962:android:a4d48912005df4c261e553',
-      messagingSenderId: '603080721962',
-      projectId: 'mobo-office',
-      storageBucket: 'mobo-office.appspot.com',
+      apiKey: 'AIzaSyDmFm0ZnaFNhbR37vqbEsJi6JPxv7jnqXw',
+      appId: '1:626662948474:android:6b17b592b506dee55805c3',
+      messagingSenderId: '626662948474',
+      projectId: 'mobile-office-6d5ed',
+      storageBucket: 'mobile-office-6d5ed.appspot.com',
     ),
   );
   runApp(const MyApp());

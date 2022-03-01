@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -48,7 +47,8 @@ _upload() async {
 
   final stream = http.ByteStream(fileReadStream);
 
-  final uri = Uri.https('siasky.net', '/skynet/skyfile');
+  final uri =
+      Uri.https('gs://mobile-office-6d5ed.appspot.com', '/cash/receipt');
   final request = http.MultipartRequest('POST', uri);
   final multipartFile = http.MultipartFile(
     'file',

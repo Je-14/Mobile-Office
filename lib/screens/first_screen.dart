@@ -20,14 +20,18 @@ class Home extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Center(
-                      child: Text(
-                        'MOBILE OFFICE',
-                        style: GoogleFonts.redressed(
-                          textStyle: Theme.of(context).textTheme.headline4,
-                          fontSize: 90,
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.normal,
+                    child: Container(
+                      color: const Color.fromARGB(255, 167, 8, 56),
+                      child: Center(
+                        child: Text(
+                          'MOBILE OFFICE',
+                          style: GoogleFonts.redressed(
+                            textStyle: Theme.of(context).textTheme.headline4,
+                            fontSize: 80,
+                            fontWeight: FontWeight.w700,
+                            fontStyle: FontStyle.normal,
+                            color: Colors.amber,
+                          ),
                         ),
                       ),
                     ),
@@ -37,34 +41,40 @@ class Home extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(60),
-                    child: Row(
+                    child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        const Text(
-                          'Login',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Colors.pink,
-                          ),
-                        ),
-                        IconButton(
-                          iconSize: 30,
-                          icon: const Icon(Icons.login, color: Colors.white),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const LoginScreen(),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text(
+                              'Login',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.pink,
                               ),
-                            );
-                          },
+                            ),
+                            IconButton(
+                              iconSize: 30,
+                              icon:
+                                  const Icon(Icons.login, color: Colors.white),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const LoginScreen(),
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
                         ),
                         const SizedBox(
                           width: 20,
                         ),
-                        const Text('or'),
+                        const Text('No Account?'),
                         const SizedBox(
-                          width: 40,
+                          width: 20,
                         ),
                         ElevatedButton(
                           onPressed: () {

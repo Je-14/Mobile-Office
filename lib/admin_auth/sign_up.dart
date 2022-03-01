@@ -22,6 +22,9 @@ class _AdminSignupScreenState extends State<AdminSignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Admin SignUp'),
+      ),
       body: Container(
         color: Colors.amber[300],
         child: Center(

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_office/adminScreens/transactions.dart';
-import 'package:mobile_office/screens/receipts.dart';
-import 'package:mobile_office/screens/view_collections.dart';
+import 'package:mobile_office/graphs/chart_time_series.dart';
+import 'package:mobile_office/screens/users.dart';
 import 'package:mobile_office/screens/view_transactions.dart';
-import 'view_collections.dart';
+import 'package:mobile_office/screens/profile_drop.dart';
 
 class AdminHome extends StatelessWidget {
   const AdminHome({Key? key}) : super(key: key);
@@ -15,7 +14,13 @@ class AdminHome extends StatelessWidget {
         title: const Text('Admin Home'),
         actions: <Widget>[
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const DropList(),
+                ),
+              );
+            },
             child: const CircleAvatar(
               backgroundImage: AssetImage('../assets/images/Profile.jpg'),
               backgroundColor: Color.fromARGB(255, 132, 221, 135),
@@ -39,7 +44,7 @@ class AdminHome extends StatelessWidget {
                 onTap: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (context) => const Receipts(),
+                      builder: (context) => const TimeseriesChartExample(),
                     ),
                   );
                 },
@@ -120,7 +125,13 @@ class AdminHome extends StatelessWidget {
                 ),
               ),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const UserInformation(),
+                    ),
+                  );
+                },
                 child: Container(
                   height: 300,
                   padding: const EdgeInsets.all(15),

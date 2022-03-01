@@ -23,6 +23,7 @@ class _EmployeeSignupScreenState extends State<EmployeeSignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: const Text('Employee SignUp')),
       body: Container(
         color: Colors.amber[300],
         child: Center(

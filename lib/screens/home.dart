@@ -17,7 +17,11 @@ class HomePage extends StatelessWidget {
         actions: <Widget>[
           GestureDetector(
             onTap: () {
-              DropList();
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => const DropList(),
+                ),
+              );
             },
             child: CircleAvatar(
               radius: 25,

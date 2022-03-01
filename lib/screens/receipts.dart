@@ -32,9 +32,9 @@ class Receipts extends StatelessWidget {
         body: const TabBarView(
           children: <Widget>[
             GetFiles(),
-            Invoice(),
-            Proforma(),
-            GeneralReceipt(),
+            GetFiles(),
+            GetFiles(),
+            GetFiles(),
           ],
         ),
       ),
